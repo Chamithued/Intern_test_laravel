@@ -1,0 +1,122 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #262b2b;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+
+form {
+    background: white;
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+    width: 100%;
+    max-width: 600px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+
+form::before {
+    content: "Create New Post";
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 30px;
+    border-bottom: 3px solid black;
+    padding-bottom: 15px;
+}
+
+
+input[name="title"] {
+    width: 100%;
+    padding: 16px 20px;
+    border: 2px solid #e1e8ed;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    outline: none;
+    background: #f8f9fa;
+    margin-bottom: 25px;
+}
+
+input[name="title"]:focus {
+    border-color: black;
+    background: white;
+}
+
+input[name="title"]::placeholder {
+    color: #9ca3af;
+    font-weight: 400;
+}
+
+textarea[name="content"] {
+    width: 100%;
+    padding: 20px;
+    border: 2px solid #e1e8ed;
+    border-radius: 12px;
+    font-size: 16px;
+    font-family: inherit;
+    line-height: 1.6;
+    resize: vertical;
+    min-height: 200px;
+    transition: all 0.3s ease;
+    outline: none;
+    background: #f8f9fa;
+    margin-bottom: 30px;
+}
+
+textarea[name="content"]:focus {
+    border-color: black;
+    background: white;
+}
+
+textarea[name="content"]::placeholder {
+    color: #9ca3af;
+    font-weight: 400;
+}
+
+
+button {
+    width: 100%;
+    padding: 18px 24px;
+    background: black;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+    overflow: hidden;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

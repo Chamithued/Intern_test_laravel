@@ -1,0 +1,248 @@
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    background: #262b2b/*linear-gradient(135deg, #667eea 0%, #764ba2 100%)*/;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* Posts container */
+ul {
+    list-style: none;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0;
+}
+
+/* Individual post container */
+li {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+    padding: 25px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+
+
+/* Post title */
+b {
+    display: block;
+    font-size: 1.5rem;
+    color: white;
+    margin-bottom: 15px;
+    font-weight: 700;
+    border-bottom: 3px solid #667eea;
+    padding-bottom: 10px;
+}
+
+/* Post content - we need to target the text content after the title 
+li::before {
+    content: '';
+    display: block;
+}*/
+
+/* Style the content text that comes after the title */
+li {
+    color: #555;
+    font-size: 1rem;
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+
+/* Actions container */
+p {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding-top: 15px;
+    border-top: 1px solid #eee;
+}
+
+/* Edit link */
+a[href^="/edit/"] {
+    background: linear-gradient(135deg, #3498db, #2980b9);
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 3px 10px rgba(52, 152, 219, 0.3);
+    display: inline-flex;
+    align-items: center;
+}
+
+
+
+/* Delete form */
+form[action^="/posts/"] {
+    display: inline-block;
+    margin: 0;
+    padding-bottom: 40px;
+}
+
+form[action^="/posts/"] button {
+    background: linear-gradient(135deg, #e74c3c, #c0392b);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 3px 10px rgba(231, 76, 60, 0.3);
+}
+/*
+form[action^="/posts/"] button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(231, 76, 60, 0.4);
+    background: linear-gradient(135deg, #c0392b, #e74c3c);
+}
+
+form[action^="/posts/"] button:active {
+    transform: translateY(0);
+}*/
+
+/* Add icons to buttons using pseudo-elements 
+a[href^="/edit/"]:before {
+    content: "✏️";
+    margin-right: 8px;
+}
+
+form[action^="/posts/"] button:before {
+    content: "🗑️";
+    margin-right: 8px;
+}*/
+
+/* Responsive design 
+@media (max-width: 768px) {
+    body {
+        padding: 15px;
+    }
+
+    ul {
+        max-width: 100%;
+    }
+
+    li {
+        padding: 20px;
+        margin-bottom: 20px;
+    }
+
+    b {
+        font-size: 1.3rem;
+        margin-bottom: 12px;
+    }
+
+    p {
+        flex-direction: column;
+        gap: 10px;
+        align-items: stretch;
+    }
+
+    a[href^="/edit/"],
+    form[action^="/posts/"] button {
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+        padding: 12px 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+
+    li {
+        padding: 15px;
+        margin-bottom: 15px;
+    }
+
+    b {
+        font-size: 1.2rem;
+        margin-bottom: 10px;
+    }
+
+    a[href^="/edit/"],
+    form[action^="/posts/"] button {
+        padding: 10px 15px;
+        font-size: 0.85rem;
+    }
+}*/
+
+/* Loading state for delete button
+form[action^="/posts/"] button:disabled {
+    background: #bdc3c7;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+/* Empty state */
+ul:empty::before {
+    content: "No posts found.";
+    display: block;
+    text-align: center;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 600;
+    padding: 60px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+}
+
+/* Add subtle animation to the page load 
+li {
+    animation: fadeInUp 0.6s ease-out forwards;
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+li:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+li:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+li:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+li:nth-child(4) {
+    animation-delay: 0.4s;
+}
+
+li:nth-child(5) {
+    animation-delay: 0.5s;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}*/
+
+/* Confirmation dialog styling for delete action */
+form[action^="/posts/"] button:focus {
+    outline: 3px solid rgba(231, 76, 60, 0.3);
+    outline-offset: 2px;
+}
