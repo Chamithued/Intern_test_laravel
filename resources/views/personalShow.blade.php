@@ -1,12 +1,16 @@
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+@extends('layouts.app')
+
+@push('styles')
     @vite('resources/css/personal.css')
-    <title>Posts</title>
-</head>
-<body>
+@endpush
+
+@section('content')
+@if(session('error'))
+    <div style="color: red; margin-bottom: 10px;">
+        {{ session('error') }}
+    </div>
+@endif
+
     <ul>
     @foreach ($posts as $post)
         <b>{{$post->title}}</b>
@@ -19,5 +23,5 @@
         </form>
     @endforeach
     </ul>
-</body>
-</html>
+
+@endsection

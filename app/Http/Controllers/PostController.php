@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PostRequest;
 use App\Models\post;
 use Illuminate\Http\Request;
 use Illuminate\Http\Request as HttpRequest;
+use Illuminate\Support\Facades\Log;
 
 class PostController extends Controller
 {
@@ -13,25 +15,25 @@ class PostController extends Controller
         return view('create');
     }
 
-    public function post(Request $request)
+    public function post(PostRequest $request)
     {
-        $validated = $request->validate(
-            [
-                'title' => 'required|max:20|string',
-                'content' => 'required|string',
-            ]
-        );
+
+        $validated = $request->validated();
         $validated['user_id'] = auth()->id();
 
         post::create($validated);
-        return redirect('/posts');
-    }
+        return redirect('/posts')->with('success','post created successfully');
+    
+
+}
 
     public function getPosts()
     {
-        $posts = post::all();
 
-        return view('show', ['posts' => $posts]);
+            $posts = post::all();
+
+            return view('show', ['posts' => $posts]);
+
     }
 
     public function getPost($id)
@@ -50,7 +52,6 @@ class PostController extends Controller
         $post = post::findOrFail($id);
 
         if ($post->user_id === auth()->id()) {
-            $post = post::findOrFail($id);
             $post->title = $request->title;
             $post->content =  $request->content;
             $post->save();
@@ -60,10 +61,17 @@ class PostController extends Controller
     }
 
     public function getMyPosts(){
+
         $userId = auth()->id();
         $posts = post::where('user_id', $userId)->get();
 
+
+        /*if($posts->isEmpty()){
+            abort(404);
+        }*/
+
         return view('personalShow', ['posts' => $posts]);
+        
     }
 
     public function delete($id)

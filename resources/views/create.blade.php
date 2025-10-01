@@ -7,9 +7,19 @@
     <title>Posts</title>
 </head>
 <body>
+        @if ($errors->any())
+        <div style="color:red;">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
     <form action="/posts" method="POST">
         @csrf
-        @method('POST')
+        
         <input name="title" placeholder="Title"><br><br>
         <textarea name="content" placeholder="Content"></textarea><br><br>
         <button>Add Post</button>
